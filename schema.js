@@ -1,7 +1,7 @@
 import { find, filter } from 'lodash';
 import { makeExecutableSchema } from 'graphql-tools';
 
-const typeDef =`
+const typeDefs =`
   type CarOfTheWeek {
     modelId: Int!
     review: String
@@ -36,7 +36,7 @@ const typeDef =`
 const resolvers = {
   Query: {
     makers: () => makers,
-    maker: (_, { id }) => find(makers, maker.id === id),
+    maker: (_, { id }) => find(makers, maker => maker.id === id),
     models: () => models,
     model: (_, { id }) => find(models, model => model.id === id),
     carOfTheWeek: () => carOfTheWeek
@@ -83,5 +83,5 @@ const models = [
   { id: 520, makeId: 50, name: 'MX-5', price: 90000, imageUrl: 'http://www.mazda.com.au/assets/cars/allnewmx5/overview/standard-feature-panel/overview-roadster-gt.jpg' }
 ];
 
-const schema = makeExecutableSchema({ typeDef, resolvers });
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 export default schema;
