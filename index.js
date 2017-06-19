@@ -9,4 +9,8 @@ const app = express();
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql', query: queries }));
 
-app.listen(3500);
+app.listen(3500, () => {
+  console.log('Graphql server listening at port 3500.');
+  console.log('To explore existing schema open:');
+  console.log('http://localhost:3500/graphiql');
+});

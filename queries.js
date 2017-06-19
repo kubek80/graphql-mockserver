@@ -1,5 +1,4 @@
-const queries = `
-query carOfTheWeek {
+const queries = `query carOfTheWeek {
   carOfTheWeek {
     review
     maker {
